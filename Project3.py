@@ -90,7 +90,6 @@ def step2_training():
         epochs=150,
         imgsz=900,      
         batch=1,        # <--- Reduced to 1 to fit in 4GB VRAM
-        #workers=2,      # <--- Reduced to save CPU/RAM overhead
         name='pcb_model',   
         device=0            
     )
@@ -103,7 +102,7 @@ def step3_evaluation():
     
     # Load your best trained model
     # Note: The path depends on where training saved it. Usually runs/detect/pcb_model/weights/best.pt
-    model_path = os.path.join('runs', 'detect', 'pcb_model', 'weights', 'best.pt')
+    model_path = os.path.join('runs', 'detect', 'pcb_model9', 'weights', 'best.pt')
     
     if not os.path.exists(model_path):
         print(f"Model not found at {model_path}. Did training finish?")
@@ -133,12 +132,11 @@ def step3_evaluation():
 # MAIN EXECUTION
 # ==========================================
 if __name__ == "__main__":
-    # Uncomment the steps you want to run
+    # Uncomment the steps
     
     #step1_object_masking()
     
-    # Only run this if you have a GPU set up, otherwise it will take hours
     #step2_training() 
     
-    # Run this after training is complete
+    # Run this after training
     step3_evaluation()
